@@ -5,17 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <link rel="stylesheet" href="..\css\styles.css">
 </head>
 
 <body>
-    <h1>Eduardo</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas odit fugit, accusantium sequi perspiciatis debitis
-        natus porro alias dicta maxime impedit hic consequuntur a nesciunt voluptatem iusto sed et? Asperiores!</p>
 
-    <header>
-        <div>
+    <header class="site-header">
+        <div class="container">
             <a href="/" class="logo" aria-label="Go home">Fruteria Los Santos</a>
-            <nav class="main-nav" aria-label="Main navigatio">
+            <nav class="nav-main" aria-label="Main navigatio">
                 <ul>
                     <li><a href="../index.html">Inicio</a></li>
                     <li><a href="#menu">Menu</a></li>
@@ -37,16 +35,16 @@
     <section id="nacionales">
         <article>
             <h3>Frutas nacionales</h3>
-            <div>
-                <article>
+            <div class="product-grid">
+                <article class="fruit-card">
                     <h4>Banano</h4>
                     <p>₡800</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Manzana</h4>
                     <p>₡1240</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Piña</h4>
                     <p>₡1800</p>
                 </article>
@@ -56,16 +54,16 @@
     <section id="importadas">
         <article>
             <h3>Frutas importadas</h3>
-            <div>
-                <article>
+            <div class="product-grid">
+                <article class="fruit-card">
                     <h4>Kiwi</h4>
                     <p>₡3250</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Ciruelas</h4>
                     <p>₡4000</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Aguacate</h4>
                     <p>₡2190</p>
                 </article>
@@ -76,22 +74,34 @@
     <section id="verduras">
         <article>
             <h3>Verduras</h3>
-            <div>
-                <article>
+            <div class="product-grid">
+                <article class="fruit-card">
                     <h4>Papa</h4>
                     <p>₡775</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Chile dulce</h4>
                     <p>₡330</p>
                 </article>
-                <article>
+                <article class="fruit-card">
                     <h4>Cebolla</h4>
                     <p>₡1300</p>
                 </article>
             </div>
         </article>
     </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy;2026 UCR. Todos los derechos reservados</p>
+            <nav aria-label="Enlaces legales">
+                <ul>
+                    <li> <a href="#">Políticas de privacidad</a> </li>
+                    <li> <a href="#">Terminos y condiciones</a> </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
 
 
