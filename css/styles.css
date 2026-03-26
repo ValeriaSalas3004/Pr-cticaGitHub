@@ -2,37 +2,43 @@
    1. VARIABLES GLOBALES (El Panel de Control)
    ========================================= */
 :root {
-  /* Paleta de colores "Frutal" */
-  --color-primary: #2ed573;
-  /* Verde fresco (Manzana/Limón) */
-  --color-primary-dark: #21a858;
-  --color-accent: #ff4757;
-  /* Rojo intenso (Fresa/Sandía) */
-  --color-warning: #ffa502;
-  /* Naranja (Cítricos/Ofertas) */
-
-  /* Tonos neutros */
-  --color-bg: #f8fcf9;
-  --color-surface: #ffffff;
-  --color-text-main: #2f3542;
-  --color-text-muted: #747d8c;
-
-  /* Tipografía y Espaciado */
-  --font-main: "Segoe UI", system-ui, sans-serif;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --radius-md: 12px;
-  --shadow-soft: 0 4px 15px rgba(46, 213, 115, 0.1);
-  --transition-fast: 0.2s ease-in-out;
+  /* Frutiger Aero Paleta Vibrante */
+  --clr-sky-top: #4face6;
+  --clr-sky-bottom: #74ebd5;
+  --clr-grass-top: #a8e063;
+  --clr-grass-bottom: #56ab2f;
+  
+  --clr-glossy-white: rgba(255, 255, 255, 0.85);
+  --clr-aero-blue: rgba(173, 216, 230, 0.4);
+  
+  --clr-primary: #27ae60;
+  --clr-accent-red: #ff4d4d;
+  --clr-accent-yellow: #f1c40f;
+  
+  --clr-text-main: #1a2a3a;
+  --clr-text-light: #ffffff;
+  
+  /* Gradientes Frutiger Aero */
+  --grad-sky: linear-gradient(135deg, var(--clr-sky-top) 0%, var(--clr-sky-bottom) 100%);
+  --grad-grass: linear-gradient(135deg, var(--clr-grass-top) 0%, var(--clr-grass-bottom) 100%);
+  --grad-gloss: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%);
+  
+  /* Aero Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(12px);
+  
+  /* Layout & Animation */
+  --font-main: 'Segoe UI', 'Outfit', system-ui, sans-serif;
+  --radius-lg: 24px;
+  --shadow-gloss: 0 8px 32px 0 rgba(31, 38, 135, 0.2), inset 0 1px 3px rgba(255,255,255,0.5);
+  --transition-smooth: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* =========================================
    2. RESET Y ESTILOS BASE
    ========================================= */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,169 +46,276 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--color-bg);
-  color: var(--color-text-main);
+  background: var(--grad-sky);
+  background-attachment: fixed;
+  color: var(--clr-text-main);
   line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  /* Evita el espacio fantasma debajo de las imágenes */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
 }
 
 /* =========================================
-   3. LAYOUT PRINCIPAL
+   3. ELEMENTOS DECORATIVOS (Burbujas)
+   ========================================= */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateY(110vh) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+}
+
+/* =========================================
+   4. LAYOUT PRINCIPAL
    ========================================= */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-lg) 0;
 }
 
-/* Grid para el catálogo de frutas */
-.product-grid {
-  display: grid;
-  /* La magia de la responsividad sin Media Queries */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* =========================================
-   4. COMPONENTES (Tarjetas y Botones)
-   ========================================= */
-/* Tarjeta de Fruta */
-.fruit-card {
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
-  box-shadow: var(--shadow-soft);
-  transition:
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.fruit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(46, 213, 115, 0.2);
-}
-
-.fruit-card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  /* Mantiene la proporción de la imagen */
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-md);
-}
-
-.fruit-card-title {
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.fruit-card-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-/* Botón de compra */
-.btn-add-cart {
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-  width: 100%;
-}
-
-.btn-add-cart:hover {
-  background-color: var(--color-primary-dark);
-}
-
-/* Etiqueta de descuento/oferta */
-.badge-sale {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: var(--color-accent);
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-md);
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
+/* Header Glossy */
 .site-header {
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: var(--shadow-gloss);
 }
 
 .site-header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
-  page: 24px;
+  height: 80px;
 }
 
 .logo {
-  font: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primary);
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(to bottom, #fff 0%, #eee 50%, #ccc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  letter-spacing: -1px;
 }
 
 .nav-main ul {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 30px;
+  list-style: none;
 }
 
 .nav-main a {
   font-weight: 600;
-  color: var(--color-text-main);
-  transition: var var(--transition-fast);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
 }
 
 .nav-main a:hover {
-  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.4);
 }
 
+/* =========================================
+   5. SECCIÓN HERO
+   ========================================= */
+.hero {
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+  position: relative;
+}
 
+.hero-content {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  padding: 60px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-gloss);
+  max-width: 800px;
+  margin: 0 auto;
+}
 
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: var(--grad-grass);
+  color: white;
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(86, 171, 47, 0.3), inset 0 2px 5px rgba(255,255,255,0.5);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(86, 171, 47, 0.4), inset 0 2px 5px rgba(255,255,255,0.6);
+}
+
+/* =========================================
+   6. CATÁLOGO DE PRODUCTOS
+   ========================================= */
+.section-title {
+  text-align: center;
+  margin: 60px 0 40px;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.fruit-card {
+  background: var(--clr-glossy-white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: var(--shadow-gloss);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.fruit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: var(--grad-gloss);
+  pointer-events: none;
+}
+
+.fruit-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.fruit-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.fruit-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--clr-text-main);
+}
+
+.fruit-card-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+  margin-bottom: 20px;
+}
+
+.btn-add-cart {
+  background: var(--grad-sky);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  width: 100%;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.4);
+}
+
+.btn-add-cart:hover {
+  filter: brightness(1.1);
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
 .site-footer {
-  background-color: var(--color-footer);
-  padding: 30px 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--glass-border);
+  padding: 60px 0;
+  color: white;
+  margin-top: 80px;
 }
 
-.site-footer .container {
+.footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
-.site-footer p {
-  margin: 0;
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
-.site-footer nav ul {
+.footer-nav ul {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  list-style: none;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .site-header .container { flex-direction: column; height: auto; padding: 20px; }
+  .nav-main ul { gap: 15px; }
 }

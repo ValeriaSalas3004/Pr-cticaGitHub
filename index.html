@@ -1,45 +1,195 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Configuración básica -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<!-- Configuración básica -->
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO básico -->
-    <title>Fruteria Los Santos</title>
-    <meta name="description" content="Descripción clara y breve del contenido de la página.">
-    <meta name="author" content="Nombre de la empresa o desarrollador">
-    <meta name="keywords" content="html, css, desarrollo web, ejemplo">
+		<!-- SEO básico -->
+		<title>Fruteria Los Santos</title>
+		<meta
+			name="description"
+			content="Descripción clara y breve del contenido de la página." />
+		<meta
+			name="author"
+			content="Nombre de la empresa o desarrollador" />
+		<meta
+			name="keywords"
+			content="html, css, desarrollo web, ejemplo" />
 
-    <!-- Robots -->
-    <meta name="robots" content="index, follow">
+		<!-- Robots -->
+		<meta
+			name="robots"
+			content="index, follow" />
 
-    <!-- Icono del sitio -->
-    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+		<!-- Icono del sitio -->
+		<link
+			rel="icon"
+			href="assets/icons/favicon.ico"
+			type="image/x-icon" />
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="css/styles.css">
+		<!-- Estilos -->
+		<link
+			rel="stylesheet"
+			href="css/styles.css" />
 
-    <!-- Open Graph básico -->
-    <meta property="og:title" content="Título de la página">
-    <meta property="og:description" content="Descripción para compartir en redes sociales">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/images/preview.jpg">
-    <meta property="og:url" content="https://www.ejemplo.com">
+		<!-- Open Graph básico -->
+		<meta
+			property="og:title"
+			content="FruteriaLS" />
+		<meta
+			property="og:description"
+			content="Descripción para compartir en redes sociales" />
+		<meta
+			property="og:type"
+			content="website" />
+		<meta
+			property="og:image"
+			content="assets/images/preview.jpg" />
+		<meta
+			property="og:url"
+			content="https://www.ejemplo.com" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Título de la página">
-    <meta name="twitter:description" content="Descripción para Twitter">
-    <meta name="twitter:image" content="assets/images/preview.jpg">
-</head>
-  <body>
-    <h2>Fruteria Los Santos</h2>
-    <p>Donde estan los mejores regalos naturales</p>
-    <ul>
-      <li><a href="pages/menu.html">Menu</a></li>
-      <li><a href="#contenido">Contenido</a></li>
-    </ul>
-  </body>
+		<!-- Twitter Card -->
+		<meta
+			name="twitter:card"
+			content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Título de la página" />
+		<meta
+			name="twitter:description"
+			content="Descripción para Twitter" />
+		<meta
+			name="twitter:image"
+			content="assets/images/preview.jpg" />
+	</head>
+	<body>
+		<!-- Fondo de Burbujas Animadas -->
+		<div class="bubbles">
+			<div
+				class="bubble"
+				style="width: 80px; height: 80px; left: 10%; animation-duration: 15s"></div>
+			<div
+				class="bubble"
+				style="width: 40px; height: 40px; left: 30%; animation-duration: 25s; animation-delay: 2s"></div>
+			<div
+				class="bubble"
+				style="width: 60px; height: 60px; left: 50%; animation-duration: 20s; animation-delay: 5s"></div>
+			<div
+				class="bubble"
+				style="width: 100px; height: 100px; left: 80%; animation-duration: 30s"></div>
+			<div
+				class="bubble"
+				style="width: 50px; height: 50px; left: 20%; animation-duration: 18s; animation-delay: 8s"></div>
+		</div>
+
+		<!-- Header -->
+		<header class="site-header">
+			<div class="container">
+				<div class="logo">Frutería Los Santos</div>
+				<nav
+					class="nav-main"
+					aria-label="Navegación principal">
+					<ul>
+						<li><a href="index.html">Inicio</a></li>
+						<li><a href="pages/menu.html">Nuestro Menú</a></li>
+						<li><a href="#contacto">Contacto</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="container">
+					<div class="hero-content">
+						<h1>Frescura Natural en cada Bocado</h1>
+						<p>Descubre la selección más vibrante y saludable de frutas locales e importadas, traídas directamente del campo a tu mesa.</p>
+						<button
+							class="btn-primary"
+							onclick="window.location.href = 'pages/menu.html'">
+							Explorar Catálogo
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured Products -->
+			<section class="container">
+				<h2 class="section-title">Nuestras Favoritas</h2>
+				<div class="product-grid">
+					<!-- Manzana -->
+					<div class="fruit-card">
+						<img
+							src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-apple-4.png"
+							alt="Manzana Roja"
+							class="fruit-card-img" />
+						<h3 class="fruit-card-title">Manzana Gala</h3>
+						<p class="fruit-card-price">$1.50 / kg</p>
+						<button class="btn-add-cart">Añadir al Carrito</button>
+					</div>
+
+					<!-- Banano -->
+					<div class="fruit-card">
+						<img
+							src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-banana-1.png"
+							alt="Banano"
+							class="fruit-card-img" />
+						<h3 class="fruit-card-title">Banano Premium</h3>
+						<p class="fruit-card-price">$0.80 / kg</p>
+						<button class="btn-add-cart">Añadir al Carrito</button>
+					</div>
+
+					<!-- Fresa -->
+					<div class="fruit-card">
+						<img
+							src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-strawberry-1.png"
+							alt="Fresa"
+							class="fruit-card-img" />
+						<h3 class="fruit-card-title">Fresa Silvestre</h3>
+						<p class="fruit-card-price">$3.20 / bandeja</p>
+						<button class="btn-add-cart">Añadir al Carrito</button>
+					</div>
+
+					<!-- Naranja -->
+					<div class="fruit-card">
+						<img
+							src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-orange-1.png"
+							alt="Naranja"
+							class="fruit-card-img" />
+						<h3 class="fruit-card-title">Naranja de Zarcero</h3>
+						<p class="fruit-card-price">$2.10 / docena</p>
+						<button class="btn-add-cart">Añadir al Carrito</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer
+			class="site-footer"
+			id="contacto">
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-logo">Frutería Los Santos © 2026</div>
+					<nav
+						class="footer-nav"
+						aria-label="Navegación del pie de página">
+						<ul>
+							<li><a href="#">Instagram</a></li>
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">WhatsApp</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>
